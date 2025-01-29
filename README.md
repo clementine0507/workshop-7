@@ -31,9 +31,11 @@ Add the number, path, and color of balls.
 
 ##### Processing
 move-circles 1.0
+
 ![image](https://github.com/user-attachments/assets/36ab682a-b85c-4709-9cf8-2cf2938b79ac)
 
 Turn circles into stars 2.0
+
 I tried to change the circle into a different shape and decided to go for a more complex one. So, I searched for "star" on a reference website, but didn't find any relevant results. Then, I asked ChatGPT how to draw a star in p5.js.
 
 ![image](https://github.com/user-attachments/assets/2b93d5b5-e78c-4527-81c8-92e6caab893d)
@@ -50,28 +52,10 @@ I replaced the ellipse in the code with the star function in the format given by
 
 3.0 I wanted stars of different sizes, so I changed all radius1 and radius2 in the drawStar function to random. but the resulting image is no longer a star, and I can't see the shape of it.
 
-function drawStar(x, y, random, random, npoints) {
-  let angle = TWO_PI / npoints;
-  let halfAngle = angle / 2.0;
-  beginShape();
-  for (let a = 0; a < TWO_PI; a += angle) {
-    let sx = x + cos(a) * random;
-    let sy = y + sin(a) * random;
-    vertex(sx, sy);
-    sx = x + cos(a + halfAngle) * random;
-    sy = y + sin(a + halfAngle) * random;
-    vertex(sx, sy);
-  }
-  endShape(CLOSE);
-}
+![7f7ab5eea1798f4c65b574b4b63bfff](https://github.com/user-attachments/assets/744300dd-a18c-45fb-b140-167f85204b4a)
 
 ![image](https://github.com/user-attachments/assets/a7254b5e-ede4-4299-82b7-68fc166b8c37)
 
 Then I checked and realized that I hadn't given the random numbers a range, so I added a for loop to give the shape of the pentagram a range of random numbers.
 
-for (let i = 0; i < 20; i++) {
-    let x = random(width); 
-    let y = random(height); 
-    let radius1 = random(5, 15); 
-    let radius2 = random(15, 30); 
-    let npoints = int(random(5, 10)); 
+![970c9c8fd7f2b80d9d9ed90a9125351](https://github.com/user-attachments/assets/cae0b64f-dc2b-478c-90f6-3807a7cead0a)
