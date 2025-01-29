@@ -30,4 +30,48 @@ Add the number, path, and color of balls.
 ![c101a533f409c9f5d484ba675a422885_](https://github.com/user-attachments/assets/6035b5d1-3b3a-4bdc-a72f-523983d66643)
 
 ##### Processing
+move-circles 1.0
+![image](https://github.com/user-attachments/assets/36ab682a-b85c-4709-9cf8-2cf2938b79ac)
 
+Turn circles into stars 2.0
+I tried to change the circle into a different shape and decided to go for a more complex one. So, I searched for "star" on a reference website, but didn't find any relevant results. Then, I asked ChatGPT how to draw a star in p5.js.
+
+![image](https://github.com/user-attachments/assets/2b93d5b5-e78c-4527-81c8-92e6caab893d)
+
+![image](https://github.com/user-attachments/assets/f43bbe9f-f4b8-4898-b400-60ab119cf5ea)
+
+![image](https://github.com/user-attachments/assets/c0d2cdd5-423a-4d84-84cc-8d1319929a53)
+
+![image](https://github.com/user-attachments/assets/4a9aab62-6359-475a-ba5f-03ef34dd3d6d)
+
+I replaced the ellipse in the code with the star function in the format given by chatgpt and surprise surprise it works fine.
+
+![image](https://github.com/user-attachments/assets/e0a698ac-8a1c-41bc-a557-18f87e02d868)
+
+3.0 I wanted stars of different sizes, so I changed all radius1 and radius2 in the drawStar function to random. but the resulting image is no longer a star, and I can't see the shape of it.
+
+function drawStar(x, y, random, random, npoints) {
+  let angle = TWO_PI / npoints;
+  let halfAngle = angle / 2.0;
+  beginShape();
+  for (let a = 0; a < TWO_PI; a += angle) {
+    let sx = x + cos(a) * random;
+    let sy = y + sin(a) * random;
+    vertex(sx, sy);
+    sx = x + cos(a + halfAngle) * random;
+    sy = y + sin(a + halfAngle) * random;
+    vertex(sx, sy);
+  }
+  endShape(CLOSE);
+}
+
+![image](https://github.com/user-attachments/assets/a7254b5e-ede4-4299-82b7-68fc166b8c37)
+
+Then I checked and realized that I hadn't given the random numbers a range, so I added a for loop to give the shape of the pentagram a range of random numbers.
+
+for (let i = 0; i < 20; i++) {
+    let x = random(width); 
+    let y = random(height); 
+    let radius1 = random(5, 15); 
+    let radius2 = random(15, 30); 
+    let npoints = int(random(5, 10)); 
